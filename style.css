@@ -1,0 +1,512 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', 'Apple SD Gothic Neo', sans-serif;
+    background: linear-gradient(180deg, #87CEEB 0%, #98FB98 40%, #228B22 100%);
+    min-height: 100vh;
+    padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.sky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.cloud {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.9;
+    animation: float 20s ease-in-out infinite;
+}
+
+.cloud::before, .cloud::after {
+    content: '';
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+}
+
+.cloud1 {
+    width: 100px;
+    height: 40px;
+    top: 30px;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.cloud1::before {
+    width: 50px;
+    height: 50px;
+    top: -25px;
+    left: 15px;
+}
+
+.cloud1::after {
+    width: 60px;
+    height: 60px;
+    top: -30px;
+    left: 40px;
+}
+
+.cloud2 {
+    width: 120px;
+    height: 50px;
+    top: 60px;
+    left: 50%;
+    animation-delay: -7s;
+}
+
+.cloud2::before {
+    width: 60px;
+    height: 60px;
+    top: -30px;
+    left: 20px;
+}
+
+.cloud2::after {
+    width: 70px;
+    height: 70px;
+    top: -35px;
+    left: 50px;
+}
+
+.cloud3 {
+    width: 80px;
+    height: 35px;
+    top: 40px;
+    right: 15%;
+    animation-delay: -14s;
+}
+
+.cloud3::before {
+    width: 40px;
+    height: 40px;
+    top: -20px;
+    left: 10px;
+}
+
+.cloud3::after {
+    width: 50px;
+    height: 50px;
+    top: -25px;
+    left: 30px;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateX(0) translateY(0); }
+    25% { transform: translateX(20px) translateY(-5px); }
+    50% { transform: translateX(40px) translateY(0); }
+    75% { transform: translateX(20px) translateY(5px); }
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: #1a5f1a;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(255,255,255,0.5);
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: #2d7a2d;
+}
+
+main {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.controls {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 20px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.filter-group, .search-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.filter-group label {
+    font-weight: 600;
+    color: #1a5f1a;
+}
+
+#emotion-filter, #search-input {
+    padding: 10px 15px;
+    border: 2px solid #90EE90;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+#emotion-filter:focus, #search-input:focus {
+    outline: none;
+    border-color: #228B22;
+    box-shadow: 0 0 0 3px rgba(34, 139, 34, 0.2);
+}
+
+#search-input {
+    min-width: 250px;
+}
+
+.stats {
+    margin-left: auto;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1a5f1a;
+    background: #90EE90;
+    padding: 8px 16px;
+    border-radius: 20px;
+}
+
+.loading, .error {
+    text-align: center;
+    padding: 40px;
+    color: #1a5f1a;
+    font-size: 1.2rem;
+}
+
+.error {
+    background: rgba(255, 100, 100, 0.2);
+    border-radius: 12px;
+}
+
+.bamboo-forest {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.bamboo-card {
+    background: linear-gradient(135deg, #90EE90 0%, #32CD32 100%);
+    border-radius: 20px;
+    padding: 20px;
+    width: 280px;
+    min-height: 200px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: plantBamboo 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes plantBamboo {
+    0% {
+        transform: scaleY(0) translateY(50px);
+        opacity: 0;
+    }
+    50% {
+        transform: scaleY(1.1) translateY(-10px);
+    }
+    70% {
+        transform: scaleY(0.95) translateY(5px);
+    }
+    100% {
+        transform: scaleY(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+.bamboo-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.bamboo-card::before {
+    content: '🎋';
+    position: absolute;
+    top: -15px;
+    right: 15px;
+    font-size: 2rem;
+    animation: sway 3s ease-in-out infinite;
+}
+
+@keyframes sway {
+    0%, 100% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+}
+
+.bamboo-emotion {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.bamboo-content {
+    color: #1a3a1a;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    word-break: break-word;
+}
+
+.bamboo-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px;
+    border-top: 2px dashed rgba(255,255,255,0.5);
+    font-size: 0.85rem;
+    color: #2d5a2d;
+}
+
+.bamboo-author {
+    font-weight: 600;
+}
+
+.bamboo-delete {
+    background: rgba(255,255,255,0.7);
+    border: none;
+    padding: 5px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    color: #8B0000;
+    transition: all 0.3s;
+}
+
+.bamboo-delete:hover {
+    background: #ff6b6b;
+    color: white;
+}
+
+.panda-container {
+    position: fixed;
+    bottom: -200px;
+    right: 20px;
+    z-index: 100;
+    transition: bottom 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+    pointer-events: none;
+}
+
+.panda-container.active {
+    bottom: 20px;
+}
+
+.panda {
+    position: relative;
+    width: 100px;
+    height: 120px;
+}
+
+.panda-body {
+    position: absolute;
+    width: 80px;
+    height: 70px;
+    background: white;
+    border-radius: 50%;
+    bottom: 0;
+    left: 10px;
+    border: 3px solid #333;
+}
+
+.panda-head {
+    position: absolute;
+    width: 60px;
+    height: 55px;
+    background: white;
+    border-radius: 50%;
+    top: 0;
+    left: 20px;
+    border: 3px solid #333;
+}
+
+.panda-ear {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #333;
+    border-radius: 50%;
+    top: -8px;
+}
+
+.panda-ear.left { left: 2px; }
+.panda-ear.right { right: 2px; }
+
+.panda-eye {
+    position: absolute;
+    width: 18px;
+    height: 14px;
+    background: #333;
+    border-radius: 50%;
+    top: 18px;
+}
+
+.panda-eye.left { left: 8px; }
+.panda-eye.right { right: 8px; }
+
+.panda-eye::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: white;
+    border-radius: 50%;
+    top: 3px;
+    left: 3px;
+}
+
+.panda-nose {
+    position: absolute;
+    width: 12px;
+    height: 8px;
+    background: #333;
+    border-radius: 50%;
+    top: 32px;
+    left: 24px;
+}
+
+.panda-mouth {
+    position: absolute;
+    width: 20px;
+    height: 10px;
+    border: 2px solid #333;
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    top: 40px;
+    left: 20px;
+    background: white;
+}
+
+.panda-arm {
+    position: absolute;
+    width: 25px;
+    height: 40px;
+    background: #333;
+    border-radius: 20px;
+    bottom: 25px;
+    left: 55px;
+    transform-origin: top center;
+    animation: eating 0.5s ease-in-out infinite;
+}
+
+@keyframes eating {
+    0%, 100% { transform: rotate(-10deg); }
+    50% { transform: rotate(10deg); }
+}
+
+.bamboo-food {
+    position: absolute;
+    right: -30px;
+    top: 50px;
+}
+
+.bamboo-segment {
+    width: 8px;
+    height: 25px;
+    background: linear-gradient(90deg, #228B22, #32CD32);
+    border-radius: 4px;
+    margin-bottom: 2px;
+    border: 1px solid #1a5f1a;
+}
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    color: #1a5f1a;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+footer a {
+    color: #228B22;
+    text-decoration: underline;
+}
+
+.fab {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #32CD32 0%, #228B22 100%);
+    border: 3px solid white;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(34, 139, 34, 0.4);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.fab:hover {
+    transform: scale(1.1) rotate(10deg);
+    box-shadow: 0 8px 25px rgba(34, 139, 34, 0.6);
+}
+
+.fab-icon {
+    font-size: 2rem;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #search-input {
+        min-width: 100%;
+    }
+
+    .stats {
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .bamboo-card {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    .fab {
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+    }
+
+    .fab-icon {
+        font-size: 1.8rem;
+    }
+}

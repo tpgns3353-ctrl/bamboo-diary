@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>대나무숲 일기 - 속마음을 털어놓세요</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="sky">
+        <div class="cloud cloud1"></div>
+        <div class="cloud cloud2"></div>
+        <div class="cloud cloud3"></div>
+    </div>
+
+    <header>
+        <h1>🎋 대나무숲 일기</h1>
+        <p class="subtitle">속마음을 대나무에 적어보세요</p>
+    </header>
+
+    <main>
+        <div class="controls">
+            <div class="filter-group">
+                <label for="emotion-filter">감정 필터:</label>
+                <select id="emotion-filter">
+                    <option value="all">전체</option>
+                    <option value="😊 기쁨">😊 기쁨</option>
+                    <option value="😢 슬픔">😢 슬픔</option>
+                    <option value="😠 화남">😠 화남</option>
+                    <option value="😌 평온">😌 평온</option>
+                    <option value="💪 의지">💪 의지</option>
+                </select>
+            </div>
+            <div class="search-group">
+                <input type="text" id="search-input" placeholder="일기 내용 검색...">
+            </div>
+            <div class="stats">
+                <span id="bamboo-count">🎋 0그루</span>
+            </div>
+        </div>
+
+        <div id="loading" class="loading">대나무 숲을 불러오는 중...</div>
+        <div id="error" class="error" style="display: none;"></div>
+        <div id="bamboo-forest" class="bamboo-forest"></div>
+    </main>
+
+    <div id="panda-container" class="panda-container">
+        <div class="panda">
+            <div class="panda-body"></div>
+            <div class="panda-head">
+                <div class="panda-ear left"></div>
+                <div class="panda-ear right"></div>
+                <div class="panda-eye left"></div>
+                <div class="panda-eye right"></div>
+                <div class="panda-nose"></div>
+                <div class="panda-mouth"></div>
+            </div>
+            <div class="panda-arm"></div>
+            <div class="bamboo-food">
+                <div class="bamboo-segment"></div>
+                <div class="bamboo-segment"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>익명으로 속마음을 털어놓으세요 | <a href="#" id="github-link">GitHub</a></p>
+    </footer>
+
+    <button id="fab" class="fab" title="일기 쓰기">
+        <span class="fab-icon">🎋</span>
+    </button>
+
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
