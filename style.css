@@ -285,19 +285,30 @@ main {
 }
 
 .bamboo-delete {
-    background: rgba(255,255,255,0.7);
-    border: none;
-    padding: 5px 10px;
-    border-radius: 8px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(255,255,255,0.9);
+    border: 2px solid #ff6b6b;
+    padding: 8px 12px;
+    border-radius: 10px;
     cursor: pointer;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     color: #8B0000;
     transition: all 0.3s;
+    opacity: 0;
+    transform: scale(0.8);
+}
+
+.bamboo-card:hover .bamboo-delete {
+    opacity: 1;
+    transform: scale(1);
 }
 
 .bamboo-delete:hover {
     background: #ff6b6b;
     color: white;
+    transform: scale(1.1);
 }
 
 .panda-container {

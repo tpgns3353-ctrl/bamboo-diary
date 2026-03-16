@@ -83,6 +83,7 @@ function createBambooCard(issue, index) {
     card.dataset.emotion = emotion.text;
 
     card.innerHTML = `
+        <button class="bamboo-delete" title="일기 삭제">🗑️ 삭제</button>
         <div class="bamboo-emotion">${emotion.emoji} ${emotion.text}</div>
         <div class="bamboo-content">${content}</div>
         <div class="bamboo-meta">
@@ -90,6 +91,14 @@ function createBambooCard(issue, index) {
             <span class="bamboo-date">${date}</span>
         </div>
     `;
+
+    const deleteBtn = card.querySelector('.bamboo-delete');
+    deleteBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (confirm('정말 이 일기를 삭제하시겠어요?\n판다가 와서 대나무를 먹을 거예요! 🐼')) {
+            deleteBamboo(issue, card);
+        }
+    });
 
     card.addEventListener('click', (e) => {
         if (!e.target.classList.contains('bamboo-delete')) {
@@ -148,6 +157,38 @@ function showPanda() {
     setTimeout(() => {
         panda.classList.remove('active');
     }, 4000);
+}
+
+function deleteBamboo(issue, card) {
+    showPanda();
+    
+    card.style.animation = 'fadeOut 0.5s forwards';
+    setTimeout(() => {
+        card.remove();
+        allIssues = allIssues.filter(i => i.number !== issue.number);
+        updateBambooCount();
+    }, 500);
+    
+    setTimeout(() => {
+        window.open(issue.html_url, '_blank');
+        alert('GitHub에서 "Close issue" 버튼을 눌러 일기를 완전히 삭제해주세요!');
+    }, 1000);
+}
+
+function showPanda() {
+    const panda = document.getElementById('panda-container');
+    panda.classList.add('active');
+    
+    setTimeout(() => {
+        panda.classList.remove('active');
+    }, 4000);
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        transform: scale(0.8) translateY(20px);
+    }
 }
 
 document.getElementById('emotion-filter').addEventListener('change', filterIssues);
